@@ -8,21 +8,22 @@ The parent AGi checkout supplies `AIVA/launch.sh` and runtime configuration.
 ## Component layout
 
 ```text
-AIVA/
-  shell/          ROS workspace
-  telepathy/      Grace entity receptor
-  console/        external Telepathy Console
-  cypher/         shared message and codec
-  health/         logging and error reporting
-  interactive/    conversation engine
-  mind/memory/    SQLite conversation storage
+AGi/
+  console/        external Telepathy Console (WebUI, outside Grace)
+  AIVA/
+    shell/          ROS workspace
+    telepathy/      Grace entity receptor
+    cypher/         shared message and codec
+    health/         logging and error reporting (inside Grace)
+    interactive/    conversation engine
+    mind/memory/    SQLite conversation storage
 ```
 
 Required links inside Shell:
 
 ```text
 src/telepathy_receptor     -> ../../telepathy
-src/telepathic_management  -> ../../console
+src/telepathic_management  -> ../../../console
 src/cryptic_signal_core    -> ../../cypher
 src/agi_logging            -> ../../health
 ```
@@ -33,10 +34,9 @@ Update the component dev branches together. From the AGi checkout root, if
 Console is not checked out:
 
 ```sh
-cd AIVA
 git clone --branch dev https://github.com/AGi-robot/console.git console
-cd shell
-ln -sfn ../../console src/telepathic_management
+cd AIVA/shell
+ln -sfn ../../../console src/telepathic_management
 ln -sfn ../../telepathy src/telepathy_receptor
 ```
 
