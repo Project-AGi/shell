@@ -66,4 +66,3 @@ CATKIN_IGNORE
 /src/agi_logging
 
 !src/telepathy_receptor
-!src/agi_logging
