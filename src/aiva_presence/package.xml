@@ -5,7 +5,7 @@
   <!-- Basic package information -->
   <name>aiva_presence</name>
   <version>0.0.0</version>
-  <description>AIVA presence heartbeat for Grace's PC companion runtime</description>
+  <description>AIVA presence heartbeat for AIVA's PC companion runtime</description>
   
   <!-- Maintainer and author information -->
   <maintainer email="oppa.ai.org@gmail.com">OppaAI</maintainer>
@@ -13,9 +13,9 @@
   <license file="LICENSE">GPL-3.0-only</license>
 
   <!-- Repository URLs -->
-  <url type="website">https://github.com/AGi-robot/shell</url>
-  <url type="repository">https://github.com/AGi-robot/shell/tree/dev/src/aiva_presence</url>
-  <url type="bugtracker">https://github.com/AGi-robot/shell/issues</url>
+  <url type="website">https://github.com/Project-AGi/shell</url>
+  <url type="repository">https://github.com/Project-AGi/shell/tree/dev/src/aiva_presence</url>
+  <url type="bugtracker">https://github.com/Project-AGi/shell/issues</url>
 
   <!-- Build tool dependencies -->
   <buildtool_depend>ament_python</buildtool_depend>
