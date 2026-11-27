@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='OppaAI',
     maintainer_email='oppa.ai.org@gmail.com',
-    description='AIVA presence heartbeat for Grace',
+    description='AIVA presence heartbeat for AIVA',
     license='GPL-3.0-only',
     extras_require={
         'test': [

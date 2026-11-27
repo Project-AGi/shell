@@ -7,7 +7,11 @@ from pathlib import Path
 import pytest
 
 
-LAUNCH_SCRIPT = Path(__file__).resolve().parents[2] / "agi/AIVA/launch.sh"
+ROOT = Path(__file__).resolve().parents[2]
+LAUNCH_SCRIPT = (Path(os.environ['AGI_REPO']) / 'AIVA/launch.sh' if os.environ.get('AGI_REPO')
+                 else ROOT / 'AGi/AIVA/launch.sh' if (ROOT / 'AGi/AIVA/launch.sh').is_file()
+                 else ROOT / 'launch.sh')
+pytestmark = pytest.mark.skipif(not LAUNCH_SCRIPT.is_file(), reason='Sibling AGi launcher checkout is not available')
 
 
 @pytest.fixture
@@ -18,6 +22,8 @@ def fake_aiva(tmp_path):
     shell = aiva / "shell"
     shell.mkdir()
     (aiva / "launch.sh").write_bytes(LAUNCH_SCRIPT.read_bytes())
+    for name in ('wakeup.py', 'spec.yaml'):
+        (aiva / name).write_bytes((LAUNCH_SCRIPT.parent / name).read_bytes())
     ros_setup = tmp_path / "ros_setup.bash"
     ros_setup.write_text("# fake ROS environment for launch-service test\n")
     venv_python = aiva / ".venv" / "bin" / "python"

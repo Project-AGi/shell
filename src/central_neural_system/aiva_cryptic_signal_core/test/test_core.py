@@ -8,7 +8,7 @@ class CrypticSignalCoreTest(unittest.TestCase):
         self.core = CrypticSignalCore()
 
     def test_default_scheme_round_trips_utf8(self):
-        for text in ("", "Hello, Grace!", "こんにちは 🌱", "spaces  and\nnewlines", "café"):
+        for text in ("", "Hello, AIVA!", "こんにちは 🌱", "spaces  and\nnewlines", "café"):
             with self.subTest(text=text):
                 signal, pulse = self.core.encode(text)
                 self.assertEqual(self.core.default_scheme(), "ternary_utf8_v1")
